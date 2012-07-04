@@ -7,7 +7,7 @@
 	<name>Maintweb: Alpha</name>
 
 	<description>
-		A template for getting started with Maintweb developmen.
+		A template for getting started with Maintweb development.
 	</description>
 
 	<author href="http://www.firstline.no"
@@ -16,9 +16,6 @@
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
-
-	<feature name="http://api.phonegap.com/1.0/geolocation"/>
-	<feature name="http://api.phonegap.com/1.0/network"/>
 
 	<preference name="orientation" value="portrait" />
 </widget>

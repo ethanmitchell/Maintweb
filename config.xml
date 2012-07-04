@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.maintweb.firstline"
+	version 	= "1.0.0">
+
+	<name>Maintweb: Alpha</name>
+
+	<description>
+		A template for getting started with Maintweb developmen.
+	</description>
+
+	<author href="http://www.firstline.no"
+		email="etahn.mitchell@firstline.no">
+		Ethan Mitchell
+	</author>
+
+	<icon src="icon.png" gap:role="default" />
+
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<preference name="orientation" value="portrait" />
+</widget>

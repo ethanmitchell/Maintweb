@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -22,15 +22,17 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 
-    <title>Cordova WP7</title>
+    <title>Maintweb Mobile</title>
 
 	  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-      <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-      <script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
 
       <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 
+
+      <script type="text/javascript" charset="utf-8" src="javascript/jquery.js"></script>
+      <script type="text/javascript" charset="utf-8" src="javascript/jquery.tabify.js"></script>
       <script type="text/javascript">
 
 
@@ -39,18 +41,111 @@
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady()
         {
-            document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
-            console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-
+            //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
+            //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
+            
         }
+
+
       </script>
 
 
 
+		<script type="text/javascript">
+			// <![CDATA[
+
+		    $(document).ready(function () {
+		        $('#menu').tabify();
+
+		        var myHeight = window.innerHeight/2; 
+		        document.getElementById('forapproval').style.height= myHeight + "px";
+		        document.getElementById('mycases').style.height = myHeight + "px";
+		        document.getElementById('initiated').style.height = myHeight + "px";
+		        document.getElementById('archived').style.height = myHeight + "px";
+		    });
+					
+			// ]]>
+		</script>
+
 
   </head>
   <body>
-    <img alt="Maintweb Logo" src="images/maintweb_logo_generic.png" />
-    <div id="welcomeMsg"><a href="testpage.html" data-role="button" data-icon="arrow-r" data-theme="a">Maintweb</a> </div>
+  <div class="container">
+    <img src="images/maintweb_logo_generic.png" width="65%" alt="Maintweb Logo" /> 
+		<ul id="menu" class="tabs">
+			<li class="active"><a href="#forapproval">For Approval</a></li>
+			<li><a href="#mycases">My Cases</a></li>
+			<li><a href="#initiated">Initiated</a></li>
+            <li><a href="#archived">Archived</a></li>
+		</ul>
+		<div id="forapproval" class="content">
+        <table>
+        <tbody>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        <tr><td><strong>10458</strong></td><td>60</td><td>K-256</td></tr>
+        <tr ><td></td><td class="seperator" colspan="2">Endre tegning 801-89-1, for K-256</td></tr>
+        
+        </tbody>
+        </table>
+		</div>
+		<div id="mycases" class="content">
+			<h2>Limerick Two</h2>
+			<p>
+
+				Let my viciousness be emptied,<br />
+			    Desire and lust banished,<br />
+			    Charity and patience,<br />
+			    Humility and obedience,<br />
+			    And all the virtues increased.
+			</p>
+		</div>
+
+		<div id="initiated" class="content">
+			<h2>Limerick Three</h2>
+			Hickere, Dickere Dock,<br />
+		    A Mouse ran up the Clock,<br />
+		    The Clock Struck One,<br />
+		    The Mouse fell down,<br />
+
+		    And Hickere Dickere Dock.
+		</div>
+
+        <div id="archived" class="content">
+			<h2>Limerick Three</h2>
+			Hickere, Dickere Dock,<br />
+		    A Mouse ran up the Clock,<br />
+		    The Clock Struck One,<br />
+		    The Mouse fell down,<br />
+
+		    And Hickere Dickere Dock.
+		</div>
+		
+           
+
+
+  </div>
   </body>
 </html>

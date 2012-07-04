@@ -23,12 +23,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DDACBEFD-7E61-490B-A5DD-DA8425EAFF00}</ProjectGuid>
+    <ProjectGuid>{4C670B5B-DDB6-4708-B087-8BE5F8A48601}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CordovaStarter1</RootNamespace>
-    <AssemblyName>CordovaStarter1</AssemblyName>
+    <RootNamespace>Maintweb_Mobile</RootNamespace>
+    <AssemblyName>Maintweb_Mobile</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -38,9 +38,9 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>CordovaStarter1.xap</XapFilename>
+    <XapFilename>Maintweb_Mobile.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>CordovaStarter1.App</SilverlightAppEntry>
+    <SilverlightAppEntry>Maintweb_Mobile.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -97,10 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CordovaSourceDictionary.xml" />
-    <Content Include="www\images\maintweb_logo_generic.png" />
-    <Content Include="www\testpage.html" />
     <None Include="BuildManifestProcessor.js" />
     <Content Include="GapLib\WP7CordovaClassLib.dll" />
+    <Content Include="www\images\maintweb_logo_generic.png" />
+    <Content Include="www\javascript\jquery.js" />
+    <Content Include="www\javascript\jquery.tabify.js" />
+    <Content Include="www\javascript\jquery.tabify.source.js" />
     <Content Include="www\cordova-1.8.1.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>

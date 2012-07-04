@@ -34,7 +34,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Resources;
 
 
-namespace CordovaStarter1
+namespace Maintweb_Mobile
 {
     public partial class MainPage : PhoneApplicationPage
     {

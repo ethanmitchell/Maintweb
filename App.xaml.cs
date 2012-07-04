@@ -32,7 +32,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace CordovaStarter1
+namespace Maintweb_Mobile
 {
     public partial class App : Application
     {

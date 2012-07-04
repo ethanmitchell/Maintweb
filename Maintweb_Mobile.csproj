@@ -100,6 +100,7 @@
     <None Include="BuildManifestProcessor.js" />
     <Content Include="GapLib\WP7CordovaClassLib.dll" />
     <Content Include="www\images\maintweb_logo_generic.png" />
+    <Content Include="www\images\wireless.png" />
     <Content Include="www\javascript\jquery.js" />
     <Content Include="www\javascript\jquery.tabify.js" />
     <Content Include="www\javascript\jquery.tabify.source.js" />

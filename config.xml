@@ -15,7 +15,7 @@
 		Ethan Mitchell
 	</author>
 
-	<icon src="icon.png" gap:role="default" />
+	<icon src="ApplicationIcon.png" gap:role="default" />
 
 	<preference name="orientation" value="portrait"/>
 	<preference name="autorotate" value="false" readonly="true"/>

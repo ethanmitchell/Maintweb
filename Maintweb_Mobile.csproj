@@ -108,6 +108,7 @@
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="www\javascript\xui.js" />
     <Content Include="www\master.css" />
     <None Include="cordova\debug.bat" />
     <None Include="cordova\emulate.bat" />

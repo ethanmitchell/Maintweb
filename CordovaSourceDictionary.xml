@@ -8,5 +8,6 @@
     <FilePath Value="www\javascript\jquery.tabify.source.js"/>
     <FilePath Value="www\cordova-1.8.1.js"/>
     <FilePath Value="www\index.html"/>
+    <FilePath Value="www\javascript\xui.js"/>
     <FilePath Value="www\master.css"/>
 </CordovaSourceDictionary>

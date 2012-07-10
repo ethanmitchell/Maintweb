@@ -63,7 +63,20 @@
 					
 			// ]]>
 		</script>
-
+        
+        <script type="text/javascript" src="javascript/xui.js"></script>
+        <script type="text/javascript" charset="utf-8">
+        x$.data = {};
+        x$(window).load(function (e) {
+            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=93210&maxRows=10",
+        { callback: function () {
+            var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
+            x$("#returned_information").html(codes[0].placeName);
+        }
+        }
+      );
+        });
+    </script>
 
   </head>
   <body>
@@ -112,15 +125,9 @@
         </table>
 		</div>
 		<div id="mycases" class="content">
-			<h2>Limerick Two</h2>
-			<p>
-
-				Let my viciousness be emptied,<br />
-			    Desire and lust banished,<br />
-			    Charity and patience,<br />
-			    Humility and obedience,<br />
-			    And all the virtues increased.
-			</p>
+            <h1 id="returned_information">
+                Put Stuff in Me
+            </h1>
 		</div>
 
 		<div id="initiated" class="content">

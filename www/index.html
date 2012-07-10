@@ -38,7 +38,7 @@
         {
             //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-            
+            checkConnection();
         }
 
 
@@ -57,7 +57,7 @@
 		        document.getElementById('mycases').style.height = myHeight + "px";
 		        document.getElementById('initiated').style.height = myHeight + "px";
 		        document.getElementById('archived').style.height = myHeight + "px";
-
+		        
                 
 		    });
 					
@@ -68,14 +68,29 @@
         <script type="text/javascript" charset="utf-8">
         x$.data = {};
         x$(window).load(function (e) {
-            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=93210&maxRows=10",
+            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=11111&maxRows=10",
         { callback: function () {
             var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
             x$("#returned_information").html(codes[0].placeName);
         }
         }
       );
-        });
+});
+
+    function checkConnection() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN] = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI] = 'WiFi connection';
+    states[Connection.CELL_2G] = 'Cell 2G connection';
+    states[Connection.CELL_3G] = 'Cell 3G connection';
+    states[Connection.CELL_4G] = 'Cell 4G connection';
+    states[Connection.NONE] = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
     </script>
 
   </head>
@@ -132,12 +147,10 @@
 
 		<div id="initiated" class="content">
 			<h2>Limerick Three</h2>
-			Hickere, Dickere Dock,<br />
-		    A Mouse ran up the Clock,<br />
-		    The Clock Struck One,<br />
-		    The Mouse fell down,<br />
 
-		    And Hickere Dickere Dock.
+
+            
+
 		</div>
 
         <div id="archived" class="content">

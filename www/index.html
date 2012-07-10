@@ -57,7 +57,7 @@
 		        document.getElementById('mycases').style.height = myHeight + "px";
 		        document.getElementById('initiated').style.height = myHeight + "px";
 		        document.getElementById('archived').style.height = myHeight + "px";
-		        
+		        checkConnection();
                 
 		    });
 					
@@ -89,7 +89,7 @@
     states[Connection.CELL_4G] = 'Cell 4G connection';
     states[Connection.NONE] = 'No network connection';
 
-    alert('Connection type: ' + states[networkState]);
+    //alert('Connection type: ' + states[networkState]);
     document.getElementById('initiated').innerHTML = "Connection type:" + states[networkState];
 }
     </script>

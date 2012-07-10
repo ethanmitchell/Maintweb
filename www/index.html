@@ -90,6 +90,7 @@
     states[Connection.NONE] = 'No network connection';
 
     alert('Connection type: ' + states[networkState]);
+    document.getElementById('initiated').innerHTML = "Connection type:" + states[networkState];
 }
     </script>
 

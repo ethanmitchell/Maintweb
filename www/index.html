@@ -39,6 +39,9 @@
             //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
             checkConnection();
+            checkinternet();
+            
+
         }
 
 
@@ -52,13 +55,12 @@
 		    $(document).ready(function () {
 		        $('#menu').tabify();
 
-		        var myHeight = window.innerHeight/2; 
-		        document.getElementById('forapproval').style.height= myHeight + "px";
+		        var myHeight = window.innerHeight / 2;
+		        document.getElementById('forapproval').style.height = myHeight + "px";
 		        document.getElementById('mycases').style.height = myHeight + "px";
 		        document.getElementById('initiated').style.height = myHeight + "px";
 		        document.getElementById('archived').style.height = myHeight + "px";
-		        checkConnection();
-                
+		        
 		    });
 					
 			// ]]>
@@ -93,7 +95,65 @@ function checkConnection() {
     //alert('Connection type: ' + states[networkState]);
     document.getElementById('initiated').innerHTML = "Connection type:" + states[networkState];
 }
+
+function checkinternet() {
+    $.ajax({
+        url: 'http://www.google.ca',
+        success: function (data) {
+            document.getElementById('archived').innerHTML = "Connection.";
+        },
+        error: function (data) {
+            document.getElementById('archived').innerHTML = "No Internet Connection.";
+        }
+    });
+}
     </script>
+
+<script type="text/javascript">
+
+<!--
+
+var pingThis = {};
+
+pingThis = {
+
+img:null, timer:null, init:function(uri) {
+
+var session = new Date();
+
+var dontCache = session.getTime();
+
+var imgLink = uri+"?time="+dontCache;//prevent JavaScript from using cached image
+
+var pingThis.img = new Image();
+
+ping.img.onload = function() {
+
+clearTimeout(pingThis.timer);
+
+pingThis.timer = null;
+
+alert("Domain is available");};
+
+pingThis.img.src = imgLink;
+
+pingThis.timer = setTimeout("pingThis.pingFailure()",300000);//wait five minutes
+
+},pingFailure:function() {
+
+clearTimeout(pingThis.timer);
+
+pingThis.timer = null;
+
+pingThis.img = null;
+
+alert("Domain is not available");
+
+}};
+
+-->
+
+</script>
 
   </head>
   <body>
@@ -145,25 +205,21 @@ function checkConnection() {
             <h1 id="returned_information">
                 Put Stuff in Me
             </h1>
+
 		</div>
 
 		<div id="initiated" class="content">
-			<h2>Limerick Three</h2>
-
-
-            
-
 		</div>
 
         <div id="archived" class="content">
-			<h2>Limerick Three</h2>
-			Hickere, Dickere Dock,<br />
-		    A Mouse ran up the Clock,<br />
-		    The Clock Struck One,<br />
-		    The Mouse fell down,<br />
-
-		    And Hickere Dickere Dock.
+        <script type="text/javascipt">
+        <!--
+        pingThis.init("http://www.google.co.uk/images/logos/ps_logo2.png");
+        -->
+        </script>
 		</div>
+
+
         </div>
 		<div class="connection">System Status: <strong>available</strong> via <img src="images/wireless.png" alt="Wireless" /> <hr /> <span class="smallfont">System last Synychronized on 18th Feburary 2011 10:14:42</span></div>
         <div class="footer"><p>Logged on as: demoUser | <a href="#">log out</a></p></div>   

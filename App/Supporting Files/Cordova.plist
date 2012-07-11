@@ -1,0 +1,5 @@
+﻿<key>Plugins</key>
+<dict>
+    <key>NetworkStatus</key>
+    <string>CDVConnection</string>
+</dict>

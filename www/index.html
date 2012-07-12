@@ -25,9 +25,10 @@
     <title>Maintweb Mobile</title>
 
 	  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-      <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>      
+         
       <script type="text/javascript" charset="utf-8" src="javascript/jquery.js"></script>
       <script type="text/javascript" charset="utf-8" src="javascript/jquery.tabify.js"></script>
+      <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>   
       <script type="text/javascript">
 
 
@@ -38,7 +39,11 @@
         {
             //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-            checkConnection();   
+            document.getElementById('initiated').innerHTML = "1";
+            var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
+            document.getElementById('initiated').innerHTML = "2";
+            db.transaction(populateDB, errorCB, successCB);
+            document.getElementById('initiated').innerHTML = "3";
 
         }
 
@@ -71,7 +76,7 @@
             x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=11111&maxRows=10",
         { callback: function () {
             var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
-            x$("#returned_information").html(codes[0].placeName);
+            //x$("#returned_information").html(codes[0].placeName);
             connected();
         }
         }
@@ -82,22 +87,40 @@ function connected() {
     document.getElementById('connected').innerHTML = "<img src='images/wireless.png' alt='Wireless' /><hr />";
 }
 
-function checkConnection() {
-    document.getElementById('initiated').innerHTML = "Configuring"; 
-    var networkState = navigator.network.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN] = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI] = 'WiFi connection';
-    states[Connection.CELL_2G] = 'Cell 2G connection';
-    states[Connection.CELL_3G] = 'Cell 3G connection';
-    states[Connection.CELL_4G] = 'Cell 4G connection';
-    states[Connection.NONE] = 'No network connection';
-
-    //alert('Connection type: ' + states[networkState]);
-    document.getElementById('initiated').innerHTML = "Connection type:" + states[networkState];
+function populateDB(tx) {
+    tx.executeSql('DROP TABLE IF EXISTS TEST');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS TEST (id unique, data)');
+    tx.executeSql('INSERT INTO TEST (id, data) VALUES (1, "First row")');
+    tx.executeSql('INSERT INTO TEST (id, data) VALUES (2, "Second row")');
 }
+
+function errorCB(err) {
+    alert("Error processing SQL: " + err.code);
+}
+
+function successCB() {
+    alert("success!");
+}
+
+function queryDB(tx) {
+    tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {
+    console.log("Returned rows = " + results.rows.length);
+    // this will be true since it was a select statement and so rowsAffected was 0
+    if (!resultSet.rowsAffected) {
+        console.log('No rows affected!');
+        return false;
+    }
+    // for an insert statement, this property will return the ID of the last inserted row
+    console.log("Last inserted row ID = " + results.insertId);
+}
+
+function errorCB(err) {
+    alert("Error processing SQL: " + err.code);
+}
+
 </script>
 
   </head>
@@ -154,14 +177,11 @@ function checkConnection() {
 		</div>
 
 		<div id="initiated" class="content">
+        <p>db</p>
 		</div>
 
         <div id="archived" class="content">
-        <script type="text/javascipt">
-        <!--
-        pingThis.init("http://www.google.co.uk/images/logos/ps_logo2.png");
-        -->
-        </script>
+
 		</div>
 
 

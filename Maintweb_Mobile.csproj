@@ -97,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CordovaSourceDictionary.xml" />
-    <None Include="App\Supporting Files\Cordova.plist" />
     <None Include="BuildManifestProcessor.js" />
     <Content Include="GapLib\WP7CordovaClassLib.dll" />
     <Content Include="www\images\maintweb_logo_generic.png" />

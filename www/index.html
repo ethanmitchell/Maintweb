@@ -39,11 +39,7 @@
         {
             //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
-            document.getElementById('initiated').innerHTML = "1";
-            var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
-            document.getElementById('initiated').innerHTML = "2";
-            db.transaction(populateDB, errorCB, successCB);
-            document.getElementById('initiated').innerHTML = "3";
+
 
         }
 
@@ -63,7 +59,11 @@
 		        document.getElementById('mycases').style.height = myHeight + "px";
 		        document.getElementById('initiated').style.height = myHeight + "px";
 		        document.getElementById('archived').style.height = myHeight + "px";
-		        
+		        document.getElementById('initiated').innerHTML = "1";
+		        var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
+		        document.getElementById('initiated').innerHTML = "2";
+		        db.transaction(populateDB, errorCB, successCB);
+		        document.getElementById('initiated').innerHTML = "3";
 		    });
 					
 			// ]]>

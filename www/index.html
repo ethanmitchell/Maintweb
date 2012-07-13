@@ -96,10 +96,11 @@ function populateDB(tx) {
     tx.executeSql('INSERT INTO TEST (id, data) VALUES (1, "First row")');
     tx.executeSql('INSERT INTO TEST (id, data) VALUES (2, "Second row")');
     tx.executeSql('INSERT INTO TEST (id, data) VALUES (3, "Third row")');
-    function populationsuccess();
+   
+    populationsuccess();
 }
 
-function populationsuccess(){
+function populationsuccess() {
     document.getElementById('initiated').innerHTML += "Datebase Populaton Success";
     }
 

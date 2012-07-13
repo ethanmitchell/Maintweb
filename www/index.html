@@ -111,28 +111,28 @@ function errorCB(err) {
 
 function successCB() {
     var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
-    document.getElementById('initiated').innerHTML = "4";
+    document.getElementById('initiated').innerHTML += "4";
     db.transaction(queryDB, errorCB);
 }
 
 function queryDB(tx) {
     
     //tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
-    document.getElementById('initiated').innerHTML = "5";
+    document.getElementById('initiated').innerHTML += "5";
 }
 
 function querySuccess(tx, results) {
     console.log("Returned rows = " + results.rows.length);
-    document.getElementById('initiated').innerHTML = "6";
+    document.getElementById('initiated').innerHTML += "6";
     // this will be true since it was a select statement and so rowsAffected was 0
     if (!resultSet.rowsAffected) {
-        document.getElementById('initiated').innerHTML = "7";
+        document.getElementById('initiated').innerHTML += "7";
         console.log('No rows affected!');
         return false;
     }
     // for an insert statement, this property will return the ID of the last inserted row
     console.log("Last inserted row ID = " + results.insertId);
-    document.getElementById('initiated').innerHTML = "8";
+    document.getElementById('initiated').innerHTML += "8";
 }
 
 function errorCB(err) {

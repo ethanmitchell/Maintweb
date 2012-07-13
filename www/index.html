@@ -54,16 +54,20 @@
 		    $(document).ready(function () {
 		        $('#menu').tabify();
 
+                //Setting up Heights
 		        var myHeight = window.innerHeight / 2;
 		        document.getElementById('forapproval').style.height = myHeight + "px";
 		        document.getElementById('mycases').style.height = myHeight + "px";
 		        document.getElementById('initiated').style.height = myHeight + "px";
 		        document.getElementById('archived').style.height = myHeight + "px";
+
+                //Creating and populating database
 		        document.getElementById('initiated').innerHTML = "1";
 		        var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
 		        document.getElementById('initiated').innerHTML = "2";
 		        db.transaction(populateDB, errorCB, successCB);
 		        document.getElementById('initiated').innerHTML = "3";
+
 		    });
 					
 			// ]]>
@@ -73,7 +77,7 @@
         <script type="text/javascript" charset="utf-8">
         x$.data = {};
         x$(window).load(function (e) {
-            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=11111&maxRows=10",
+            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=90210&maxRows=10",
         { callback: function () {
             var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
             //x$("#returned_information").html(codes[0].placeName);
@@ -99,7 +103,8 @@ function errorCB(err) {
 }
 
 function successCB() {
-    alert("success!");
+    var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+    db.transaction(queryDB, errorCB);
 }
 
 function queryDB(tx) {

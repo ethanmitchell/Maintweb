@@ -39,6 +39,8 @@
         {
             //document.getElementById("welcomeMsg").innerHTML += "Cordova is ready! version=" + window.device.cordova;
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
+            var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+            db.transaction(populateDB, errorCB, successCB);
 
 
         }
@@ -62,7 +64,7 @@
 		        document.getElementById('archived').style.height = myHeight + "px";
 
                 //Creating and populating database
-		        var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
+		        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
 		        db.transaction(populateDB, errorCB, successCB);
 		        document.getElementById('initiated').innerHTML = "3";
 
@@ -91,11 +93,11 @@ function connected() {
 }
 
 function populateDB(tx) {
-    tx.executeSql('DROP TABLE IF EXISTS TEST');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS TEST (id unique, data)');
-    tx.executeSql('INSERT INTO TEST (id, data) VALUES (1, "First row")');
-    tx.executeSql('INSERT INTO TEST (id, data) VALUES (2, "Second row")');
-    tx.executeSql('INSERT INTO TEST (id, data) VALUES (3, "Third row")');
+    tx.executeSql('DROP TABLE IF EXISTS DEMO');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+
    
     populationsuccess();
 }
@@ -110,14 +112,15 @@ function errorCB(err) {
 }
 
 function successCB() {
-    var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
-    document.getElementById('initiated').innerHTML += "4";
+    var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
     db.transaction(queryDB, errorCB);
+
+    document.getElementById('initiated').innerHTML += "4";
 }
 
 function queryDB(tx) {
-    
-    //tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
+
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
     document.getElementById('initiated').innerHTML += "5";
 }
 

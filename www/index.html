@@ -104,11 +104,13 @@ function errorCB(err) {
 
 function successCB() {
     var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+    document.getElementById('initiated').innerHTML = "4";
     db.transaction(queryDB, errorCB);
 }
 
 function queryDB(tx) {
     tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
+    document.getElementById('initiated').innerHTML = "5";
 }
 
 function querySuccess(tx, results) {
@@ -120,6 +122,7 @@ function querySuccess(tx, results) {
     }
     // for an insert statement, this property will return the ID of the last inserted row
     console.log("Last inserted row ID = " + results.insertId);
+    document.getElementById('initiated').innerHTML = "6";
 }
 
 function errorCB(err) {

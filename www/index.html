@@ -102,7 +102,7 @@ function errorCB(err) {
 }
 
 function successCB() {
-    var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+    var db = window.openDatabase("test", "1.0", "Firstline Web", 1000000);
     document.getElementById('initiated').innerHTML = "4";
     db.transaction(queryDB, errorCB);
 }

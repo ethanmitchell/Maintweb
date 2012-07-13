@@ -108,7 +108,8 @@ function successCB() {
 }
 
 function queryDB(tx) {
-    tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
+    
+    //tx.executeSql('SELECT * FROM TEST', [], querySuccess, errorCB);
     document.getElementById('initiated').innerHTML = "5";
 }
 

@@ -125,12 +125,12 @@ function queryDB(tx) {
 }
 
 function querySuccess(tx, results) {
-    console.log("Returned rows = " + results.rows.length);
+   alert("Returned rows = " + results.rows.length);
     document.getElementById('initiated').innerHTML += "6";
     // this will be true since it was a select statement and so rowsAffected was 0
     if (!resultSet.rowsAffected) {
         document.getElementById('initiated').innerHTML += "7";
-        console.log('No rows affected!');
+        alert('No rows affected!');
         return false;
     }
     // for an insert statement, this property will return the ID of the last inserted row

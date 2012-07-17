@@ -48,6 +48,7 @@ namespace Maintweb_Mobile
         private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
         {
             this.PGView.Loaded -= GapBrowser_Loaded;
+
             Storyboard _storyBoard = new Storyboard();
             DoubleAnimation animation = new DoubleAnimation()
             {

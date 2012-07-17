@@ -73,19 +73,26 @@
 			// ]]>
 		</script>
         
-        <script type="text/javascript" src="javascript/xui.js"></script>
+        <script type="text/javascript" charset="utf-8" src="javascript/xui.js"></script>
         <script type="text/javascript" charset="utf-8">
-        x$.data = {};
-        x$(window).load(function (e) {
-            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=90210&maxRows=10",
-        { callback: function () {
-            var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
+//       x$.data = {};
+//        x$(window).load(function (e) {
+//            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=90210&maxRows=10",
+//        { callback: function () {
+//            var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
             //x$("#returned_information").html(codes[0].placeName);
-            connected();
-        }
-        }
-      );
+//            connected();
+//        }
+//        }
+//      );
+//});
+
+x$.data = {};
+x$(window).load(function (e) {
+    x$("#returned_information").xhr("http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus");
+    this.connected();
 });
+
 
 function connected() {
     document.getElementById('archived').innerHTML = "Connection Successful";
@@ -98,7 +105,7 @@ function populateDB(tx) {
     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (3, "Second row")');
-    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (4, "Second row")');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (, "Second row")');
 
    
     populationsuccess();
@@ -144,7 +151,7 @@ function errorCB(err) {
     alert("Error processing SQL: " + err.code);
 }
 
-</script>
+        </script>
 
   </head>
   <body>
@@ -193,9 +200,9 @@ function errorCB(err) {
         </table>
 		</div>
 		<div id="mycases" class="content">
-            <h1 id="returned_information">
+            <div id="returned_information">
                 Put Stuff in Me
-            </h1>
+            </div>
 
 		</div>
 

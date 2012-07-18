@@ -75,6 +75,8 @@
         
         <script type="text/javascript" charset="utf-8" src="javascript/xui.js"></script>
         <script type="text/javascript" charset="utf-8">
+
+//       Example Web Service
 //       x$.data = {};
 //        x$(window).load(function (e) {
 //            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=90210&maxRows=10",
@@ -90,6 +92,10 @@
 x$.data = {};
 x$(window).load(function (e) {
     x$("#returned_information").xhr("http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus");
+
+    var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
+
+    x$("#returned_workorders").xhr((url), { method: 'post', data: 'statoil001', error: function () { alert('did not work') } });
     this.connected();
 });
 
@@ -201,6 +207,9 @@ function errorCB(err) {
 		</div>
 		<div id="mycases" class="content">
             <div id="returned_information">
+                Put Stuff in Me
+            </div>
+            <div id="returned_workorders">
                 Put Stuff in Me
             </div>
 

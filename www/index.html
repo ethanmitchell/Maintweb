@@ -96,7 +96,7 @@ x$(window).load(function (e) {
     var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
 
     x$("#returned_workorders").xhr(url, { method: 'post',
-        _deviceId: 'statoil001',
+        data: '<_deviceId>statoil001</_deviceId>',
         error: function () { alert(this.responseText)}, 
         callback: function () {
                 var workorders = eval("(" + this.responseText + ")")

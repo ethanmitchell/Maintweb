@@ -1364,7 +1364,7 @@ q.toString() == '[object HTMLCollection]' || typeof q.length == 'number') {
             // Set "X-Requested-With" header
             req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-            if (method.toLowerCase() == 'post') req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            if (method.toLowerCase() == 'post'); req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             for (key in o.headers) {
                 if (o.headers.hasOwnProperty(key)) {

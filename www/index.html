@@ -89,24 +89,34 @@
 //      );
 //});
 
-x$.data = {};
-x$(window).load(function (e) {
-    x$("#returned_information").xhr("http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus");
+            x$.data = {};
+            var url2 = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus';
+            x$(window).load(function (e) {
+                x$("#returned_information").xhr(url2,
+                   { error: function () { alert(this.responseText); },
+                       callback: function () {
+                           var status = this.responseText;
+                           x$("#returned_information").html(status);
+                       }
+                   });
 
-    var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
-
-    x$("#returned_workorders").xhr(url, { method: 'post',
-        //_deviceId: 'statoil001',
-        headers: {'Content-Type' : 'text/xml'},
-        data: '<deviceId>statoil001</deviceId>',
-        error: function () { alert(this.responseText)}, 
-        callback: function () {
-                var workorders = eval("(" + this.responseText + ")")
-                x$("#returned_workorders").html(workorders);
-        }
-        });
-    this.connected();
-});
+                var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
+                var device = 'statoil001';
+                x$("#returned_workorders").xhr(url, { method: 'post',
+                    //_deviceId: 'statoil001',
+                    //headers: { 'Content-Type': 'text/xml' },
+                    data: '_deviceId=' + device,
+                    error: function () {
+                        var workorders = this.responseText;
+                        x$("#returned_workorders").html(workorders);
+                    },
+                    callback: function () {
+                        var workorders = this.responseText;
+                        x$("#returned_workorders").html(workorders);
+                    }
+                });
+                this.connected();
+            });
 
 
 function connected() {
@@ -219,7 +229,7 @@ function errorCB(err) {
                 Put Stuff in Me
             </div>
             <div id="returned_workorders">
-                Put Stuff in Me
+                Put Stuff in Me also
             </div>
 
 		</div>

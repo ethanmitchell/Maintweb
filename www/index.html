@@ -76,43 +76,58 @@
         <script type="text/javascript" charset="utf-8" src="javascript/xui.js"></script>
         <script type="text/javascript" charset="utf-8">
 
-//       Example Web Service
-//       x$.data = {};
-//        x$(window).load(function (e) {
-//            x$("#returned_information").xhr("http://ws.geonames.org/postalCodeSearchJSON?postalcode=90210&maxRows=10",
-//        { callback: function () {
-//            var codes = eval("(" + this.responseText + ")").postalCodes; /* this should be an array */
-            //x$("#returned_information").html(codes[0].placeName);
-//            connected();
-//        }
-//        }
-//      );
-//});
-
+//Get System Status Web Service
             x$.data = {};
-            var url2 = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus';
+            var urlstatus = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus';
             x$(window).load(function (e) {
-                x$("#returned_information").xhr(url2,
+                x$("#returned_information").xhr(urlstatus,
                    { error: function () { alert(this.responseText); },
                        callback: function () {
                            var status = this.responseText;
-                           x$("#returned_information").html(status);
+
+                           if (status) {
+                               document.getElementById('returned_information').innerHTML = 'The System is online.';
+                           } else {
+                               document.getElementById('returned_information').innerHTML = 'The System is offline, ' + status + '.';
+                           }
                        }
                    });
 
-                var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
-                var device = 'statoil001';
-                x$("#returned_workorders").xhr(url, { method: 'post',
+                function scheduledWorkOrders() {
+                    //Get Scheduled work Orders web Service
+                    var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
+                    var device = 'statoil001';
+                    x$("#returned_workorders").xhr(url, { method: 'post',
+                        //_deviceId: 'statoil001',
+                        //headers: { 'Content-Type': 'text/xml' },
+                        data: '_deviceId=' + device,
+                        error: function () {
+                            var workorders = this.responseText;
+                            x$("#returned_workorders").html(workorders);
+                        },
+                        callback: function () {
+                            var workorders = this.responseText;
+                            x$("#returned_workorders").html(workorders);
+                            alert(workorders);
+                        }
+                    });
+                }
+                //Get System Version web Service
+                var urlversion = 'http://test.blackfish.no/WebServices/mobileSync.asmx/CheckSystemVersion';
+
+                x$("#returned_version").xhr(urlversion, { method: 'post',
                     //_deviceId: 'statoil001',
                     //headers: { 'Content-Type': 'text/xml' },
-                    data: '_deviceId=' + device,
+                    data: '_deviceId=statoil001&_majorVersion=100&_minorVersion=0',
                     error: function () {
                         var workorders = this.responseText;
-                        x$("#returned_workorders").html(workorders);
+                        x$("#returned_version").html(workorders);
+
                     },
                     callback: function () {
                         var workorders = this.responseText;
-                        x$("#returned_workorders").html(workorders);
+                        x$("#returned_version").html(workorders);
+
                     }
                 });
                 this.connected();
@@ -228,8 +243,13 @@ function errorCB(err) {
             <div id="returned_information">
                 Put Stuff in Me
             </div>
+             <button onclick="scheduledWorkOrders()">Get Workorders</button>
             <div id="returned_workorders">
-                Put Stuff in Me also
+               
+            </div>
+
+            <div id="returned_version">
+                Put Version Here
             </div>
 
 		</div>

@@ -72,6 +72,7 @@
         
         
         <script type="text/javascript" charset="utf-8">
+        //Functions called on startup
         //Get System Status Web Service
             x$.data = {};
             var urlstatus = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus';
@@ -111,20 +112,22 @@
             });
             </script>
 
+
         <script type="text/javascript" charset="utf-8">
-           
+            //Functions called using buttons           
             function scheduledWorkOrders() {
-                x$.data = {};
+                //x$.data = {};
                 //Get Scheduled work Orders web Service
                 var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
-                var device = 'statoil001';
+                var device = document.getElementById('deviceId').value;
                 x$("#returned_workorders").xhr(url, { method: 'post',
                     //_deviceId: 'statoil001',
                     //headers: { 'Content-Type': 'text/xml' },
                     data: '_deviceId=' + device,
                     error: function () {
                         var workorders = this.responseText;
-                        x$("#returned_workorders").html(workorders);
+                        //x$("#returned_workorders").html(workorders);
+                        alert('That is not a valid Device ID, please try again.');
                     },
                     callback: function () {
                         var workorders = this.responseText;
@@ -246,8 +249,10 @@ function errorCB(err) {
             <div id="returned_information">
                 Put Stuff in Me
             </div>
-             <button onclick="scheduledWorkOrders()">Get Workorders</button>
             
+             Device Id:<input id="deviceId" type="text" name="deviceId" />
+             <button onclick="scheduledWorkOrders()">Get Workorders</button>            
+             
             <div id="returned_workorders">
                Work Orders
             </div>

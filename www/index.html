@@ -28,10 +28,13 @@
          
       <script type="text/javascript" charset="utf-8" src="javascript/jquery.js"></script>
       <script type="text/javascript" charset="utf-8" src="javascript/jquery.tabify.js"></script>
-      <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>   
+      <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>
+      <script type="text/javascript" charset="utf-8" src="javascript/xui.js"></script>   
+      
+      
+      
+      
       <script type="text/javascript">
-
-
         document.addEventListener("deviceready",onDeviceReady,false);
 
         // once the device ready event fires, you can safely do your thing! -jm
@@ -44,39 +47,32 @@
 
 
         }
+        // <![CDATA[
 
+        $(document).ready(function () {
+            $('#menu').tabify();
 
+            //Setting up Heights
+            var myHeight = window.innerHeight / 2;
+            document.getElementById('forapproval').style.height = myHeight + "px";
+            document.getElementById('mycases').style.height = myHeight + "px";
+            document.getElementById('initiated').style.height = myHeight + "px";
+            document.getElementById('archived').style.height = myHeight + "px";
+
+            //Creating and populating database
+            var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+            db.transaction(populateDB, errorCB, successCB);
+            document.getElementById('initiated').innerHTML = "3";
+
+        });
+
+        // ]]>
       </script>
 
-
-
-		<script type="text/javascript">
-			// <![CDATA[
-
-		    $(document).ready(function () {
-		        $('#menu').tabify();
-
-                //Setting up Heights
-		        var myHeight = window.innerHeight / 2;
-		        document.getElementById('forapproval').style.height = myHeight + "px";
-		        document.getElementById('mycases').style.height = myHeight + "px";
-		        document.getElementById('initiated').style.height = myHeight + "px";
-		        document.getElementById('archived').style.height = myHeight + "px";
-
-                //Creating and populating database
-		        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-		        db.transaction(populateDB, errorCB, successCB);
-		        document.getElementById('initiated').innerHTML = "3";
-
-		    });
-					
-			// ]]>
-		</script>
         
-        <script type="text/javascript" charset="utf-8" src="javascript/xui.js"></script>
+        
         <script type="text/javascript" charset="utf-8">
-
-//Get System Status Web Service
+        //Get System Status Web Service
             x$.data = {};
             var urlstatus = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetSystemStatus';
             x$(window).load(function (e) {
@@ -93,25 +89,6 @@
                        }
                    });
 
-                function scheduledWorkOrders() {
-                    //Get Scheduled work Orders web Service
-                    var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
-                    var device = 'statoil001';
-                    x$("#returned_workorders").xhr(url, { method: 'post',
-                        //_deviceId: 'statoil001',
-                        //headers: { 'Content-Type': 'text/xml' },
-                        data: '_deviceId=' + device,
-                        error: function () {
-                            var workorders = this.responseText;
-                            x$("#returned_workorders").html(workorders);
-                        },
-                        callback: function () {
-                            var workorders = this.responseText;
-                            x$("#returned_workorders").html(workorders);
-                            alert(workorders);
-                        }
-                    });
-                }
                 //Get System Version web Service
                 var urlversion = 'http://test.blackfish.no/WebServices/mobileSync.asmx/CheckSystemVersion';
 
@@ -132,6 +109,32 @@
                 });
                 this.connected();
             });
+            </script>
+
+        <script type="text/javascript" charset="utf-8">
+           
+            function scheduledWorkOrders() {
+                x$.data = {};
+                //Get Scheduled work Orders web Service
+                var url = 'http://test.blackfish.no/WebServices/mobileSync.asmx/GetScheduledWorkOrders';
+                var device = 'statoil001';
+                x$("#returned_workorders").xhr(url, { method: 'post',
+                    //_deviceId: 'statoil001',
+                    //headers: { 'Content-Type': 'text/xml' },
+                    data: '_deviceId=' + device,
+                    error: function () {
+                        var workorders = this.responseText;
+                        x$("#returned_workorders").html(workorders);
+                    },
+                    callback: function () {
+                        var workorders = this.responseText;
+                        //alert(workorders);
+                        x$("#returned_workorders").html(workorders);
+
+
+                    }
+                });
+            }
 
 
 function connected() {
@@ -244,8 +247,9 @@ function errorCB(err) {
                 Put Stuff in Me
             </div>
              <button onclick="scheduledWorkOrders()">Get Workorders</button>
+            
             <div id="returned_workorders">
-               
+               Work Orders
             </div>
 
             <div id="returned_version">

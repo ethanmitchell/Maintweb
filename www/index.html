@@ -89,25 +89,6 @@
                            }
                        }
                    });
-
-                //Get System Version web Service
-                var urlversion = 'http://test.blackfish.no/WebServices/mobileSync.asmx/CheckSystemVersion';
-
-                x$("#returned_version").xhr(urlversion, { method: 'post',
-                    //_deviceId: 'statoil001',
-                    //headers: { 'Content-Type': 'text/xml' },
-                    data: '_deviceId=statoil001&_majorVersion=100&_minorVersion=0',
-                    error: function () {
-                        var workorders = this.responseText;
-                        x$("#returned_version").html(workorders);
-
-                    },
-                    callback: function () {
-                        var workorders = this.responseText;
-                        x$("#returned_version").html(workorders);
-
-                    }
-                });
                 this.connected();
             });
             </script>
@@ -139,6 +120,27 @@
                 });
             }
 
+            function getSystemVersion() {
+                //Get System Version web Service
+                var urlversion = 'http://test.blackfish.no/WebServices/mobileSync.asmx/CheckSystemVersion';
+                var device = document.getElementById('deviceId').value;
+                x$("#returned_version").xhr(urlversion, { method: 'post',
+                    //_deviceId: 'statoil001',
+                    //headers: { 'Content-Type': 'text/xml' },
+                    data: '_deviceId='+device+'&_majorVersion=100&_minorVersion=0',
+                    error: function () {
+                        var workorders = this.responseText;
+                        //x$("#returned_version").html(workorders);
+                        alert('That is not a valid Device ID, please try again.');
+                    },
+                    callback: function () {
+                        var workorders = this.responseText;
+                        x$("#returned_version").html(workorders);
+
+                    }
+                });
+
+            }
 
 function connected() {
     document.getElementById('archived').innerHTML = "Connection Successful";
@@ -246,17 +248,20 @@ function errorCB(err) {
         </table>
 		</div>
 		<div id="mycases" class="content">
+        Device Id:<input id="deviceId" type="text" name="deviceId" />  <button onclick="scheduledWorkOrders()">Get Workorders</button>  <button onclick="getSystemVersion()">Get System Version</button>  
             <div id="returned_information">
                 Put Stuff in Me
             </div>
             
-             Device Id:<input id="deviceId" type="text" name="deviceId" />
-             <button onclick="scheduledWorkOrders()">Get Workorders</button>            
              
+                     
+             <h3>Scheduled Work Orders</h3>
             <div id="returned_workorders">
                Work Orders
             </div>
 
+            
+            <h3>System Version</h3> 
             <div id="returned_version">
                 Put Version Here
             </div>

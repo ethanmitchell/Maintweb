@@ -201,18 +201,31 @@ function errorCB(err) {
 
         </script>
         <script type="text/javascript">
+            (function (doc) {
 
-        touchMove = function(event) {
+                var addEvent = 'addEventListener',
+        type = 'gesturestart',
+        qsa = 'querySelectorAll',
+        scales = [1, 1],
+        meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
 
-        // Prevent scrolling on this element
+                function fix() {
+                    meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
+                    doc.removeEventListener(type, fix, true);
+                }
 
-        event.preventDefault();
+                if ((meta = meta[meta.length - 1]) && addEvent in doc) {
+                    fix();
+                    scales = [.25, 1.6];
+                    doc[addEvent](type, fix, true);
+                }
 
-           }
-           </script>
+            } (document));
+</script>
+
   </head>
   <body>
-  <div class="container" ontouchmove="touchMove(event);">
+  <div class="container">
   <div class="innercontainer">
     <img class="logo" src="images/maintweb_logo_generic.png" width="75%" alt="Maintweb Logo" /> 
 

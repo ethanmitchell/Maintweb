@@ -44,7 +44,7 @@
             //console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
             var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
             db.transaction(populateDB, errorCB, successCB);
-            this.connected();
+
 
         }
         // <![CDATA[
@@ -72,6 +72,7 @@
         
         
         <script type="text/javascript" charset="utf-8">
+
         //Functions called on startup
         //Get System Status Web Service
             x$.data = {};
@@ -89,7 +90,7 @@
                            }
                        }
                    });
-                
+                this.connected();
             });
             </script>
 
@@ -142,15 +143,9 @@
 
             }
 
-            function connected() {
-
-                if (navigator.network.connection.type == Connection.NONE) {
-                    alert("No internet connection - we will not be able to load any data.");
-                } else {
-                    document.getElementById('archived').innerHTML = "Connection Successful";
-                    document.getElementById('connected').innerHTML = "<img src='images/wireless.png' alt='Wireless' /><hr />";
-                }
-   
+function connected() {
+    document.getElementById('archived').innerHTML = "Connection Successful";
+    document.getElementById('connected').innerHTML = "<img src='images/wireless.png' alt='Wireless' /><hr />";
 }
 
 function populateDB(tx) {
